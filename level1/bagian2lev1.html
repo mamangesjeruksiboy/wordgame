@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="CACHE-CONTROL" content="NO-CACHE">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=yes">
+    <title>Game Edukasi - Bagian 2</title>
+    <style>
+        .letter:hover {
+            background-color: #007bff;
+            color: #fff;
+            transform: scale(1.2);
+            transition: all 0.2s;
+        }
+
+        .letter {
+            display: inline-block;
+            margin: 5px;
+            font-size: 24px;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .letters-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: nowrap;
+            gap: 10px;
+        }
+
+        .image-container img {
+            width: 150px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .refresh-button {
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body id="index-body" style="overflow: hidden;">
+    <div>
+        <!-- Link Home -->
+        <a href="/index.html" onclick="return confirmLeave()" style="display: inline-block; text-decoration: none; margin: 10px;">
+            <i class="fa fa-home" style="font-size: 45px; color: blue;"></i>
+        </a>
+    </div>
+    <div class="container d-flex justify-content-start align-items-center vh-100">
+        <div class="card shadow-lg" style="width: 40rem; position: relative; overflow: hidden;">
+            <div class="card-body text-center">
+                <h3 class="card-title text-primary">Bagian 2</h3>
+                <hr>
+                <!-- Gambar rumah -->
+                <div class="image-container">
+                    <img src="/assets/img/rumah.png" alt="Gambar Rumah">
+                </div>
+                <!-- Petunjuk -->
+                <p class="card-text">Tuliskan huruf yang sesuai dengan gambar di atas</p>
+                <!-- Tombol Play dan Stop -->
+                <div class="mb-3">
+                    <button class="btn btn-success" id="playAudio">Putar Suara</button>
+                    <button class="btn btn-danger" id="stopAudio">Hentikan Suara</button>
+                </div>
+                <!-- Form Input -->
+                <div class="mt-3">
+                    <input type="text" class="form-control w-50 mx-auto text-center" id="answer" placeholder="Isi huruf di sini" maxlength="5">
+                </div>
+            </div>
+            <div class="text-center mb-3">
+                <a href="bagian3lev1.html" class="btn btn-primary">Halaman Selanjutnya</a>
+            </div>
+        </div>
+    </div>
+
+    <audio id="audioPetunjuk" autoplay>
+        <source src="/assets/sound/suara3.mp3" type="audio/mpeg">
+        Browser Anda tidak mendukung pemutaran audio.
+    </audio>
+
+    <script>
+        const audio = document.getElementById('audioPetunjuk');
+        const playButton = document.getElementById('playAudio');
+        const stopButton = document.getElementById('stopAudio');
+
+        // Putar otomatis saat halaman dibuka
+        window.onload = () => {
+            audio.play();
+        };
+
+        // Play Audio
+        playButton.addEventListener('click', () => {
+            audio.currentTime = 0; // Reset ke awal
+            audio.play();
+        });
+
+        // Stop Audio
+        stopButton.addEventListener('click', () => {
+            audio.pause();
+            audio.currentTime = 0; // Reset ke awal
+        });
+
+        // Fungsi untuk konfirmasi sebelum meninggalkan halaman
+        function confirmLeave() {
+            return confirm("Apakah kamu yakin ingin meninggalkan halaman ini?");
+        }
+    </script>
+</body>
+
+</html>
