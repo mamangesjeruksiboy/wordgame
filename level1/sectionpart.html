@@ -48,7 +48,7 @@
             </div>
         </div>
     </div>
-
+    <audio id="instruction-audio" src="/assets/sound/suaralevel1.mp3"></audio>
     <script>
         // Fungsi untuk mengaktifkan bagian berdasarkan status localStorage
         function checkCompletionStatus() {
@@ -94,6 +94,33 @@
 
         // Jalankan pengecekan saat halaman dimuat
         window.onload = checkCompletionStatus;
+    </script>
+    <script>
+        const audioElement = document.getElementById("instruction-audio");
+            const toggleAudioButton = document.getElementById("toggle-audio");
+            const replayAudioButton = document.getElementById("replay-audio");
+
+            // Fungsi untuk memutar audio otomatis
+            window.onload = function () {
+                audioElement.play();
+            };
+
+            // Fungsi untuk toggle audio
+            toggleAudioButton.addEventListener("click", () => {
+                if (!audioElement.paused) {
+                    audioElement.pause();
+                    toggleAudioButton.textContent = "Hidupkan Suara";
+                } else {
+                    audioElement.play();
+                    toggleAudioButton.textContent = "Matikan Suara";
+                }
+            });
+
+            // Fungsi untuk memutar ulang audio
+            replayAudioButton.addEventListener("click", () => {
+                audioElement.currentTime = 0; // Reset audio ke awal
+                audioElement.play(); // Putar audio
+            });
     </script>
 </body>
 
